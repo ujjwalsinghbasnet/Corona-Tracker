@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corona Tracker</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+
+    <style>
+        img{
+            height: 100px;
+            width: 8-px;
+        }
+        .flex{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        #content{
+            display: none;
+        }
+        #mytable{
+            display: none;
+        }
+        .container{
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col text-center bg-primary mt-5 rounded">
+                <h2>Corona-Tracker</h2>
+                <hr>
+                <div class="overall-case">
+                    <h6>Total Infected: </h6>
+                    <p id="infected"></p>
+                    <h6>Total Deaths: </h6>
+                    <span id="deaths"></span>
+                    <h6>Recovered: </h6>
+                    <span id="recovered"></span>
+                </div>
+                <div class="btns">
+                    <button type="button" class="btn btn-primary mt-2 mb-2 bg-info" data-toggle="modal" data-target="#exampleModal">
+                        Search By Country
+                    </button>
+                    <button id="loadAll" class="btn btn-primary mt-2 mb-2 ml-2 bg-info">Load All Cases</button>
+                </div>
+                <hr class="mb-3">
+                <div id="mytable">
+                <table style="width: 100%">
+                    <thead class="thead-light" id = "insertHere">
+                        <tr>
+                            <th>Country</th>
+                            <th>Cases</th>
+                            <th>Deaths</th>
+                            <th>Recovered</th>
+                            <th>New Cases</th>
+                            <th>New Deaths</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="form">
+                  <div class="form-group">
+                      <label for="Country">Country</label>
+                      <input type="text" class="form-control" id="Country">
+                  </div>
+              </form>
+              <div class="country-content" id="content">
+                   <div class="flex">
+                        <div class="img">
+                            <img  id="flag">
+                            <h6 class = "ml-4" id="title"></h6>
+                        </div>
+                        <div class="mod-content">
+                                <h6>Total Infected: </h6><span id="modal-infected"></span>
+                                
+                                <h6>Total Deaths: </h6><span id="modal-deaths"></span>
+                                
+                                <h6>Recovered: </h6><span id="modal-recovered"></span>
+
+                                <h6>New Cases: </h6><span id="modal-cases"></span>
+
+                                <h6>New Deaths: </h6><span id="modal-newdeaths"></span>
+                                
+                            </div>
+                    </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" id="close" data-dismiss="modal">Close</button>
+              <button  class="btn btn-primary" id="button">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="app.js"></script>
+</body>
+</html>
