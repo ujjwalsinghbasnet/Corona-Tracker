@@ -19,33 +19,45 @@ function getlatest(){
         document.getElementById("infected").innerHTML = result.cases;
         document.getElementById("deaths").innerHTML = result.deaths;
         document.getElementById("recovered").innerHTML = result.recovered;
-    }) 
+    })
+    .catch(err => alert('Please check your connection!'))
 }
 function loadAll(){
-    let output;
+    let output = "";
     document.getElementById("mytable").style.display="block";
 
     fetch('https://corona.lmao.ninja/countries')
     .then(res => res.json())
     .then(data => {
-        data.forEach(function(res){
-             output += `
-            <tr>
-            <th>${res.country}</th>
-            <th>${res.cases}</th>
-            <th>${res.deaths}</th>
-            <th>${res.recovered}</th>
-            <th class="bg-warning">+${res.todayCases}</th>
-            <th class="bg-danger">+${res.todayDeaths}</th>
+        data.forEach(function(results){
+             output += `<tr>
+            <th class="text-left">${results.country}</th>
+            <th class="text-left">${results.cases}</th>
+            <th class="text-left">${results.deaths}</th>
+            <th class="text-left">${results.active}</th>
+            <th class="text-left">${results.recovered}</th>
+            <th class="bg-warning text-left">+${results.todayCases}</th>
+            <th class="bg-danger text-left">+${results.todayDeaths}</th>
           </tr>
           `
         })
-        document.getElementById("insertHere").insertAdjacentHTML("afterend",output);
+        document.getElementById("insertHere").innerHTML = output;
     })
 }
 
 let button = document.getElementById("button");
-button.addEventListener('click',function(e){
+button.addEventListener('click',loadCountry)
+
+const form = document.getElementById("form");
+form.onsubmit = e => {
+  e.preventDefault();
+  let input = document.getElementById("Country").value;
+  loadCountry();
+};
+
+
+function loadCountry(){
+
     let input = document.getElementById("Country").value;
     document.getElementById("Country").value=" ";
     fetch(`https://corona.lmao.ninja/countries/${input}`)
@@ -60,7 +72,11 @@ button.addEventListener('click',function(e){
             document.getElementById("modal-newdeaths").innerHTML = data.todayDeaths;
     })
         document.getElementById("content").style.display = "block";
-})
+}
 document.getElementById("close").addEventListener("click",function(e){
     document.getElementById("content").style.display = "none";
 })
+document.getElementById("close2").addEventListener("click",function(e){
+    document.getElementById("content").style.display = "none";
+})
+

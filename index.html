@@ -21,6 +21,10 @@
         #mytable{
             display: none;
         }
+        table{
+            align-items: left;
+            justify-content: left;
+        }
         .container{
             position: relative;
         }
@@ -53,16 +57,18 @@
                 <hr class="mb-3">
                 <div id="mytable">
                 <table style="width: 100%">
-                    <thead class="thead-light" id = "insertHere">
+                    <thead class="thead-light">
                         <tr>
-                            <th>Country</th>
-                            <th>Cases</th>
-                            <th>Deaths</th>
-                            <th>Recovered</th>
-                            <th>New Cases</th>
-                            <th>New Deaths</th>
+                            <th class="text-left">Country</th>
+                            <th class="text-left">Cases</th>
+                            <th class="text-left">Deaths</th>
+                            <th class="text-left">Active</th>
+                            <th class="text-left">Recovered</th>
+                            <th class="text-left">New Cases</th>
+                            <th class="text-left">New Deaths</th>
                         </tr>
                     </thead>
+                    <tbody id="insertHere"></tbody>
                 </table>
             </div>
             </div>
@@ -73,7 +79,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Search By Country</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <button type="button" class="close" id="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
@@ -106,7 +112,7 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" id="close" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-secondary" id="close2" data-dismiss="modal">Close</button>
               <button  class="btn btn-primary" id="button">Save changes</button>
             </div>
           </div>
