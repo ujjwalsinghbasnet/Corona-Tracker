@@ -12,7 +12,7 @@ document.getElementById("loadAll").addEventListener("click",loadAll);
 
 function getlatest(){
     let result;
-    fetch('https://corona.lmao.ninja/all')
+    fetch('https://corona.lmao.ninja/v2/all')
     .then(res => res.json())
     .then(data => {
         result = data;
@@ -26,7 +26,7 @@ function loadAll(){
     let output = "";
     document.getElementById("mytable").style.display="block";
 
-    fetch('https://corona.lmao.ninja/countries')
+    fetch('https://corona.lmao.ninja/v2/countries')
     .then(res => res.json())
     .then(data => {
         data.forEach(function(results){
@@ -60,7 +60,7 @@ function loadCountry(){
 
     let input = document.getElementById("Country").value;
     document.getElementById("Country").value=" ";
-    fetch(`https://corona.lmao.ninja/countries/${input}`)
+    fetch(`https://corona.lmao.ninja/v2/countries/${input}`)
     .then(res => res.json())
     .then(data => {
             document.getElementById("flag").src = data.countryInfo.flag;
@@ -70,6 +70,7 @@ function loadCountry(){
             document.getElementById("modal-recovered").innerHTML = data.recovered;
             document.getElementById("modal-cases").innerHTML = data.todayCases;
             document.getElementById("modal-newdeaths").innerHTML = data.todayDeaths;
+            document.getElementById("modal-active").innerHTML = data.active;
     })
         document.getElementById("content").style.display = "block";
 }
